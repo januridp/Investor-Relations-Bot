@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gemini AI - Modern Assistant</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Marked.js (Markdown parser) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Highlight.js (Syntax highlighting) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="new-chat-btn" id="new-chat">
+          <i data-lucide="plus"></i>
+          <span>New Chat</span>
+        </button>
+      </div>
+      <div class="sidebar-history" id="chat-history">
+        <div class="history-label">Recent Chats</div>
+        <!-- Mockup history items -->
+        <div class="history-item active">
+          <i data-lucide="message-square"></i>
+          <span>Current Conversation</span>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="avatar">U</div>
+          <span>User Settings</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Chat Content -->
+    <main class="main-content">
+      <header class="top-nav">
+        <button class="mobile-menu-btn" id="sidebar-toggle">
+          <i data-lucide="menu"></i>
+        </button>
+        <div class="model-info">
+          <span class="model-name">Gemini 1.5 Flash</span>
+        </div>
+      </header>
+
+      <div id="chat-box" class="chat-container">
+        <!-- Welcome message -->
+        <div class="welcome-container" id="welcome-screen">
+          <div class="welcome-icon">
+            <i data-lucide="sparkles" size="48"></i>
+          </div>
+          <h1>How can I help you today?</h1>
+        </div>
+      </div>
+
+      <footer class="input-area">
+        <div class="input-wrapper">
+          <form id="chat-form">
+            <textarea id="user-input" placeholder="Message Gemini..." rows="1" autocomplete="off" required></textarea>
+            <button type="submit" id="send-btn" disabled>
+              <i data-lucide="arrow-up"></i>
+            </button>
+          </form>
+        </div>
+        <div class="footer-note">
+          Gemini can make mistakes. Check important info.
+        </div>
+      </footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Configure Marked
+    marked.setOptions({
+      highlight: function(code, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          return hljs.highlight(code, { language: lang }).value;
+        }
+        return hljs.highlightAuto(code).value;
+      },
+      breaks: true,
+      gfm: true
+    });
+  </script>
+</body>
+</html>
